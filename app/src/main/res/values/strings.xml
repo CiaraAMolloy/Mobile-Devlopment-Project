@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Mobile Devlopment Project</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="make_new_flash_card">Make new flash card?</string>
+    <string name="next">Next</string>
+    <string name="definition">definition</string>
+    <string name="term">term</string>
 </resources>

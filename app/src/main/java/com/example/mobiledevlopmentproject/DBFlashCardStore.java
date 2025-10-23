@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class DBFlashCardStore extends FlashCardStore {
     private static DBHandler flashcards;
-    public DBFlashCardStore(Context context,String f, String l) {
+    public DBFlashCardStore(Context context) {
         super();
         if (flashcards == null) {
             flashcards = new DBHandler(context);
