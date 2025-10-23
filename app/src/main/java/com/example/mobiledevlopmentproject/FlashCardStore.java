@@ -22,20 +22,20 @@ public abstract class FlashCardStore {
         term=f;
         definition=l;
     }
-    public String getFirst() {
+    public String getTerm() {
         return term;
     }
-    public void setFirst(String f) {
-        term=f;
+    public void setTerm(String t) {
+        term=t;
     }
-    public String getLast() {
+    public String getDef()  {
         return definition;
     }
-    public void setLast(String l) {
-        definition=l;
+    public void setDefinition(String d) {
+        definition=d;
     }
 
-    public abstract void writeNames(Context context,
+    public abstract void writeFlashCards(Context context,
                                     ArrayList<FlashCard> values) ;
 
     public  abstract ArrayList<FlashCard> getFlashCards(Context context);

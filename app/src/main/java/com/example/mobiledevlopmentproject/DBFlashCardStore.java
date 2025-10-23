@@ -15,7 +15,7 @@ public class DBFlashCardStore extends FlashCardStore {
     }
 
     @Override
-    public void writeNames(Context context, ArrayList<FlashCard> values) {
+    public void writeFlashCards(Context context, ArrayList<FlashCard> values) {
         if (!values.isEmpty()) {
             for (FlashCard n : values) {
                 flashcards.add(n);
