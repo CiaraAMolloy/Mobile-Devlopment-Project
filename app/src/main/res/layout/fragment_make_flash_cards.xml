@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".MakeFlashCards">
 
     <!-- TODO: Update blank fragment layout -->
@@ -16,34 +17,43 @@
         app:layout_constraintTop_toTopOf="parent"
 
         />
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/make_new_flash_card" />
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/Add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:onClick="AddToDataBase"
-        android:text="@string/next"
+        android:text="@string/add"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="677dp" />
+        tools:layout_editor_absoluteY="677dp"
+
+
+        />
 
     <EditText
         android:id="@+id/term"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/term" />
+        android:layout_width="243dp"
+        android:layout_height="91dp"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:text="@string/term"
+        tools:ignore="LabelFor" />
 
     <EditText
         android:id="@+id/definition"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/definition" />
+        android:layout_width="240dp"
+        android:layout_height="115dp"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:text="@string/definition"
+        tools:ignore="LabelFor" />
 
 
-
-</FrameLayout>
+</LinearLayout >

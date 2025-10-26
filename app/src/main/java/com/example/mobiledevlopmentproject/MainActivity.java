@@ -1,8 +1,10 @@
 package com.example.mobiledevlopmentproject;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +21,11 @@ public class MainActivity extends AppCompatActivity {
     private static int current = 0;
     private static ArrayList<Fragment> fragments;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fragments = new ArrayList<Fragment>();
+        fragments = new ArrayList<>();
         fragments.add(new MakeFlashCards());
 
 
@@ -35,6 +38,24 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        DBFlashCardStore n = new DBFlashCardStore(this);
+        ArrayList<FlashCard> FlashCards = n.getFlashCards(this);
+        //EditText text = findViewById(R.id.term);
+        //String value = text.getText().toString();
+
+        FlashCards.add(new FlashCard("", ""));
+
+        n.writeFlashCards(this, FlashCards);
+
+        n.getFlashCards(this);
+        String namesStr ="";
+        for (FlashCard x : n.getFlashCards(this)) {
+            namesStr = namesStr + "\n" + x.getTerm() + " " + x.getDef();
+
+        }
+
+
+
 
 /*
         TextView target = findViewById(R.id.FlashCardText);

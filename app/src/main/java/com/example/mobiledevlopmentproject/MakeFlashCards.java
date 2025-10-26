@@ -7,28 +7,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.content.Context;
-import android.os.Bundle;
-import android.widget.TextView;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.ArrayList;
-import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MakeFlashCards#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MakeFlashCards extends Fragment {
+public class MakeFlashCards extends Fragment implements View.OnClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,6 +28,7 @@ public class MakeFlashCards extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    Button addbutton;
 
     public MakeFlashCards() {
         // Required empty public constructor
@@ -89,12 +80,68 @@ public class MakeFlashCards extends Fragment {
             namesStr = namesStr + "\n" + x.getTerm() + " " + x.getDef();
         }*/
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_make_flash_cards, container, false);
+        View makingView = inflater.inflate(R.layout.fragment_make_flash_cards, container, false);
+        addbutton = (Button) makingView.findViewById(R.id.Add);
+        addbutton.setOnClickListener(this);
+        return makingView;
 
     }
 
 
     public void AddToDataBase(){
+       /* View view=this.getView();
+
+            // load First Fragment
+            DBFlashCardStore n = new DBFlashCardStore(this.getContext());
+            ArrayList<FlashCard> FlashCards = n.getFlashCards(this.getContext());
+            EditText text = view.findViewById(R.id.term);
+            String value = text.getText().toString();
+
+            FlashCards.add(new FlashCard(value, ""));
+
+            n.writeFlashCards(this.getContext(), FlashCards);
+
+            n.getFlashCards(this.getContext());
+            String namesStr ="";
+            for (FlashCard x : n.getFlashCards(this.getContext())) {
+                namesStr = namesStr + "\n" + x.getTerm() + " " + x.getDef();
+
+            }*/
+}
+
+    @Override
+    public void onClick(View v) {
+       /* switch(v.getId()){  // getting the id of clicked item.
+            case R.id.calculateButton:  // When the button will pressed.
+                EditText InitialVelocityInput = getView().findViewById(R.id.initialVelocityInput);
+                EditText VelocityInput = getView().findViewById(R.id.velocityInput);
+                EditText AccelerationInput = getView().findViewById(R.id.accelerationInput);
+                EditText TimeInput = getView().findViewById(R.id.timeInput);
+
+                Log.d("bing", "bing");
+                break;
+        }*/
+
+            if(v.getId() == R.id.Add){
+
+             DBFlashCardStore n = new DBFlashCardStore(this.getContext());
+             ArrayList<FlashCard> FlashCards = n.getFlashCards(this.getContext());
+
+                EditText text = getView().findViewById(R.id.term);
+                String value = text.getText().toString();
+
+            FlashCards.add(new FlashCard(value, ""));
+
+            n.writeFlashCards(this.getContext(), FlashCards);
+
+             n.getFlashCards(this.getContext());
+             String namesStr = "";
+             for (FlashCard x : n.getFlashCards(this.getContext())) {
+            namesStr = namesStr + "\n" + x.getTerm() + " " + x.getDef();
+
+                 }
+
+        }
 
     }
-}
+    }
