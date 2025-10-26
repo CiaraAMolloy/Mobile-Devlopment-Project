@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        DBFlashCardStore n = new DBFlashCardStore(this);
+        /*DBFlashCardStore n = new DBFlashCardStore(this);
         ArrayList<FlashCard> FlashCards = n.getFlashCards(this);
         //EditText text = findViewById(R.id.term);
         //String value = text.getText().toString();
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         for (FlashCard x : n.getFlashCards(this)) {
             namesStr = namesStr + "\n" + x.getTerm() + " " + x.getDef();
 
-        }
+        }*/
 
 
 

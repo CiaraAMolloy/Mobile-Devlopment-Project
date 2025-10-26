@@ -111,16 +111,7 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-       /* switch(v.getId()){  // getting the id of clicked item.
-            case R.id.calculateButton:  // When the button will pressed.
-                EditText InitialVelocityInput = getView().findViewById(R.id.initialVelocityInput);
-                EditText VelocityInput = getView().findViewById(R.id.velocityInput);
-                EditText AccelerationInput = getView().findViewById(R.id.accelerationInput);
-                EditText TimeInput = getView().findViewById(R.id.timeInput);
 
-                Log.d("bing", "bing");
-                break;
-        }*/
 
             if(v.getId() == R.id.Add){
 
@@ -139,7 +130,7 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
              for (FlashCard x : n.getFlashCards(this.getContext())) {
             namesStr = namesStr + "\n" + x.getTerm() + " " + x.getDef();
 
-                 }
+                 }//to do clear strings when done
 
         }
 
