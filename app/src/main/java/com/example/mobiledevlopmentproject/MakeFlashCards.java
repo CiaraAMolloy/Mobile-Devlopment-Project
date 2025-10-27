@@ -97,12 +97,13 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
 
 
-            if(v.getId() == R.id.Add){
+            if(v.getId() == R.id.Add && !(getView().findViewById(R.id.setnames) ==null)){
 
              DBFlashCardStore n = new DBFlashCardStore(this.getContext());
 
              ArrayList<FlashCard> FlashCards = n.getFlashCards(this.getContext());
              FlashCards.clear();
+
                 Spinner setnames=getView().findViewById(R.id.setnames);
                 String setname= setnames.getSelectedItem().toString();
                 EditText textt = getView().findViewById(R.id.term);

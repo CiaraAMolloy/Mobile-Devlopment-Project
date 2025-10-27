@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
 
         android:name="com.example.mobiledevlopmentproject.MakeFlashCards"
-        tools:layout="@layout/fragment_make_flash_cards">
+        tools:layout="@layout/fragment_make_sets">
 
     </androidx.fragment.app.FragmentContainerView>
 
