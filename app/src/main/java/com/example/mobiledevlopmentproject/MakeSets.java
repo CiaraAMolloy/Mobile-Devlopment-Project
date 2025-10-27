@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -69,6 +70,15 @@ public class MakeSets extends Fragment implements View.OnClickListener{
 
         addbutton = (Button) makingView.findViewById(R.id.Addset);
         addbutton.setOnClickListener(this);
+        Spinner Subjects=makingView.findViewById(R.id.Subject);
+        ArrayList<String> SubjectList=new ArrayList<>();
+        SubjectList.add("maths");
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<>
+                        (this.getContext(),
+                                android.R.layout.simple_spinner_dropdown_item,
+                                SubjectList);
+        Subjects.setAdapter(adapter);
         return makingView;
     }
 
@@ -82,6 +92,7 @@ public class MakeSets extends Fragment implements View.OnClickListener{
             sets.clear();
             Spinner Subject=getView().findViewById(R.id.Subject);
             String Sub= Subject.getSelectedItem().toString();
+
             EditText Setval = getView().findViewById(R.id.Set);
             String Setvalue = Setval.getText().toString();
 

@@ -97,6 +97,21 @@ public class DBHandler extends SQLiteOpenHelper{
         return sets;
     }
 
+    public ArrayList<String> getSetNames() {
+        SQLiteDatabase db = this.getReadableDatabase();
+// This will be the result.
+        ArrayList<String> sets= new ArrayList<>();
+        Cursor cursor =
+                db.rawQuery("SELECT distinct "+SUBJECT_SET_FIRST_COL+" FROM " + SUBJECT_SET, null);
+        if (cursor.moveToFirst()) {
+            do {
+                sets.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return sets;
+    }
+
 
 
     @Override

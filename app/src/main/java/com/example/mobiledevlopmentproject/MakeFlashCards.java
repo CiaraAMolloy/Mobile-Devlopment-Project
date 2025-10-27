@@ -78,12 +78,14 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
         addbutton = (Button) makingView.findViewById(R.id.Add);
         addbutton.setOnClickListener(this);
         Spinner setnames=makingView.findViewById(R.id.setnames);
-        String[] temporaryspinnerfill= new String[]{"set1", "set2", "set3"};
+        //String[] SETS= new String[]{"set1", "set2", "set3"};
+        DBHandler db =new DBHandler(this.getContext());
+        ArrayList<String> Setnames=db.getSetNames();
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>
                         (this.getContext(),
                                 android.R.layout.simple_spinner_dropdown_item,
-                                temporaryspinnerfill);
+                                Setnames);
         setnames.setAdapter(adapter);
         return makingView;
 
