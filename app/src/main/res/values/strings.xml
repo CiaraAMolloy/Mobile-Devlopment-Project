@@ -7,4 +7,6 @@
     <string name="definition">definition</string>
     <string name="term">term</string>
     <string name="add">ADD</string>
+    <string name="subject">Subject</string>
+    <string name="make_new_flashcard_set">make new flashcard set?</string>
 </resources>

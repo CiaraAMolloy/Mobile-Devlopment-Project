@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 
@@ -67,47 +69,27 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-       /* DBFlashCardStore n=new DBFlashCardStore(this.getContext());
-        ArrayList<FlashCard> FlashCards =n.getFlashCards(this.getContext());
 
-        FlashCards.add(new FlashCard("",""));
 
-        n.writeFlashCards(this.getContext(),FlashCards);
 
-        n.getFlashCards(this.getContext());
-        String namesStr = new String();
-        for (FlashCard x : n.getFlashCards(this.getContext())) {
-            namesStr = namesStr + "\n" + x.getTerm() + " " + x.getDef();
-        }*/
+
         // Inflate the layout for this fragment
         View makingView = inflater.inflate(R.layout.fragment_make_flash_cards, container, false);
         addbutton = (Button) makingView.findViewById(R.id.Add);
         addbutton.setOnClickListener(this);
+        Spinner setnames=makingView.findViewById(R.id.setnames);
+        String[] temporaryspinnerfill= new String[]{"set1", "set2", "set3"};
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<>
+                        (this.getContext(),
+                                android.R.layout.simple_spinner_dropdown_item,
+                                temporaryspinnerfill);
+        setnames.setAdapter(adapter);
         return makingView;
 
     }
 
 
-    public void AddToDataBase(){
-       /* View view=this.getView();
-
-            // load First Fragment
-            DBFlashCardStore n = new DBFlashCardStore(this.getContext());
-            ArrayList<FlashCard> FlashCards = n.getFlashCards(this.getContext());
-            EditText text = view.findViewById(R.id.term);
-            String value = text.getText().toString();
-
-            FlashCards.add(new FlashCard(value, ""));
-
-            n.writeFlashCards(this.getContext(), FlashCards);
-
-            n.getFlashCards(this.getContext());
-            String namesStr ="";
-            for (FlashCard x : n.getFlashCards(this.getContext())) {
-                namesStr = namesStr + "\n" + x.getTerm() + " " + x.getDef();
-
-            }*/
-}
 
     @Override
     public void onClick(View v) {
@@ -116,16 +98,23 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
             if(v.getId() == R.id.Add){
 
              DBFlashCardStore n = new DBFlashCardStore(this.getContext());
+
              ArrayList<FlashCard> FlashCards = n.getFlashCards(this.getContext());
+             FlashCards.clear();
+                Spinner setnames=getView().findViewById(R.id.setnames);
+                String setname= setnames.getSelectedItem().toString();
+                EditText textt = getView().findViewById(R.id.term);
+                String valuet = textt.getText().toString();
+                EditText textd = getView().findViewById(R.id.definition);
+                String valued = textd.getText().toString();
 
-                EditText text = getView().findViewById(R.id.term);
-                String value = text.getText().toString();
-
-            FlashCards.add(new FlashCard(value, ""));
+                FlashCards.add(new FlashCard(setname,valuet, valued));
 
             n.writeFlashCards(this.getContext(), FlashCards);
 
              n.getFlashCards(this.getContext());
+
+
              String namesStr = "";
              for (FlashCard x : n.getFlashCards(this.getContext())) {
             namesStr = namesStr + "\n" + x.getTerm() + " " + x.getDef();

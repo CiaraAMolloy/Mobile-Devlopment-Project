@@ -11,6 +11,7 @@ public class DBFlashCardStore extends FlashCardStore {
         super();
         if (flashcards == null) {
             flashcards = new DBHandler(context);
+
         }
     }
 

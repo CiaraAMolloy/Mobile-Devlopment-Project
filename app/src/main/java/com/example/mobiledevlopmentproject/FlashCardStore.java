@@ -7,21 +7,32 @@ public abstract class FlashCardStore {
     private String term;
     private String definition;
 
+    private String setName;
+
 
     public FlashCardStore() {
 
 
     }
-    public FlashCardStore(String f, String l) {
+    public FlashCardStore(String s,String f, String l) {
+        this.setName=s;
         this.term=f;
         this.definition=l;
 
     }
 
-    public void setName(String f, String l) {
+    public void setFlashcard(String s, String f, String l) {
+        setName=s;
         term=f;
         definition=l;
     }
+    public String getSetName() {
+        return setName;
+    }
+    public void setSetName(String s) {
+        setName=s;
+    }
+
     public String getTerm() {
         return term;
     }

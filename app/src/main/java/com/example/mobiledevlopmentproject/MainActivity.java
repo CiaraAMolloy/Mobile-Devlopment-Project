@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         fragments = new ArrayList<>();
         fragments.add(new MakeFlashCards());
+        fragments.add(new MakeSets());
 
 
 

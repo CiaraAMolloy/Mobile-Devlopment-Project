@@ -23,19 +23,11 @@
         android:layout_height="wrap_content"
         android:text="@string/make_new_flash_card" />
 
-    <Button
-        android:id="@+id/Add"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/setnames"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:text="@string/add"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="677dp"
-
-
-        />
+        android:spinnerMode="dropdown"/>
 
     <EditText
         android:id="@+id/term"
@@ -54,6 +46,19 @@
         android:inputType="text"
         android:text="@string/definition"
         tools:ignore="LabelFor" />
+    <Button
+        android:id="@+id/Add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="@string/add"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="677dp"
+
+
+        />
 
 
 </LinearLayout >
