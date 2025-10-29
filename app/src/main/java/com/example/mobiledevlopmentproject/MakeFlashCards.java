@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -87,6 +88,19 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
                                 android.R.layout.simple_spinner_dropdown_item,
                                 Setnames);
         setnames.setAdapter(adapter);
+
+        ListView flashcardlist=makingView.findViewById(R.id.listmakeflashcards);
+        ArrayList<String> testlist=new ArrayList<>();
+
+        ArrayAdapter<String> adapter2 =
+                new ArrayAdapter<>
+                        (this.getContext(),
+                                android.R.layout.simple_list_item_multiple_choice,
+                                testlist);
+        flashcardlist.setAdapter(adapter2);
+
+
+
         return makingView;
 
     }
@@ -123,6 +137,19 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
             namesStr = namesStr + "\n" + x.getTerm() + " " + x.getDef();
 
                  }//to do clear strings when done
+
+
+
+                DBHandler db=new DBHandler(this.getContext());
+                ArrayList<String> set= db.getSpecificSet(setname);
+
+                ListView flashcardlist=getView().findViewById(R.id.listmakeflashcards);
+                ArrayAdapter<String> adapter =
+                        new ArrayAdapter<>
+                                (this.getContext(),
+                                        android.R.layout.simple_list_item_multiple_choice,
+                                        set );
+                flashcardlist.setAdapter(adapter);
 
         }
 
