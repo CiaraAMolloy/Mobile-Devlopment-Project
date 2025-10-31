@@ -18,9 +18,24 @@
         android:id="@+id/select"
         android:text="select"
         />
+
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="366dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:id="@+id/DELETEBUTTON"
+        android:text="@string/delete"
+        />
+
+    <TextView
+        android:id="@+id/FlashCardText"
+        android:layout_width="match_parent"
+        android:layout_height="163dp"
+        android:text="doesn't work" />
+
 
 </LinearLayout>
