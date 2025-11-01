@@ -68,7 +68,7 @@ public class MakeSets extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View makingView = inflater.inflate(R.layout.fragment_make_sets, container, false);
 
-        addbutton = (Button) makingView.findViewById(R.id.Addset);
+        addbutton =  makingView.findViewById(R.id.Addset);
         addbutton.setOnClickListener(this);
         Spinner Subjects=makingView.findViewById(R.id.Subject);
         ArrayList<String> SubjectList=new ArrayList<>();
@@ -90,6 +90,7 @@ public class MakeSets extends Fragment implements View.OnClickListener{
 
             ArrayList<Set> sets = n.getSets(this.getContext());
             sets.clear();
+            assert getView() != null;
             Spinner Subject=getView().findViewById(R.id.Subject);
             String Sub= Subject.getSelectedItem().toString();
 
@@ -104,9 +105,9 @@ public class MakeSets extends Fragment implements View.OnClickListener{
             n.getSets(this.getContext());
 
 
-            String namesStr = "";
+            StringBuilder namesStr = new StringBuilder();
             for (Set x : n.getSets(this.getContext())) {
-                namesStr = namesStr + "\n" + x.getSubject() + " " + x.getSetName();
+                namesStr.append("\n").append(x.getSubject()).append(" ").append(x.getSetName());
 
             }//to do clear strings when done
 

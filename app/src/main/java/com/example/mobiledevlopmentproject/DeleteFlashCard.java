@@ -1,17 +1,15 @@
 package com.example.mobiledevlopmentproject;
 
-import static androidx.fragment.app.FragmentManager.TAG;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
@@ -78,36 +76,38 @@ public class DeleteFlashCard extends Fragment implements View.OnClickListener {
         View create= inflater.inflate(R.layout.fragment_delete_flash_card, container, false);
         ListView flashcardlist=create.findViewById(R.id.list);
         ArrayList<String> testlist=new ArrayList<>();
-
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>
-                        (this.getContext(),
-                                android.R.layout.simple_list_item_multiple_choice,
-                                testlist);
-        flashcardlist.setAdapter(adapter);
-        flashcardlist.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-
-
-        Spinner setnames=create.findViewById(R.id.setnamesDEL);
-        //String[] SETS= new String[]{"set1", "set2", "set3"};
-        DBHandler db =new DBHandler(this.getContext());
-        ArrayList<String> Setnames=db.getSetNames();
-        ArrayAdapter<String> adapter2 =
-                new ArrayAdapter<>
-                        (this.getContext(),
-                                android.R.layout.simple_spinner_dropdown_item,
-                                Setnames);
+if(!(this.getContext() ==null)) {
+    ArrayAdapter<String> adapter =
+            new ArrayAdapter<>
+                    (this.getContext(),
+                            android.R.layout.simple_list_item_multiple_choice,
+                            testlist);
+    flashcardlist.setAdapter(adapter);
+    flashcardlist.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
 
-        setnames.setAdapter(adapter2);
+    Spinner setnames = create.findViewById(R.id.setnamesDEL);
+    //String[] SETS= new String[]{"set1", "set2", "set3"};
+    ArrayList<String> Setnames;
+    try (DBHandler db = new DBHandler(this.getContext())) {
+        Setnames = db.getSetNames();
+    }
+    ArrayAdapter<String> adapter2 =
+            new ArrayAdapter<>
+                    (this.getContext(),
+                            android.R.layout.simple_spinner_dropdown_item,
+                            Setnames);
 
 
-        selbutton = (Button) create.findViewById(R.id.select);
-        selbutton.setOnClickListener(this);
-        Button delbutton = (Button) create.findViewById(R.id.DELETEBUTTON);
-        delbutton.setOnClickListener(this);
+    setnames.setAdapter(adapter2);
 
 
+    selbutton = (Button) create.findViewById(R.id.select);
+    selbutton.setOnClickListener(this);
+    Button delbutton = (Button) create.findViewById(R.id.DELETEBUTTON);
+    delbutton.setOnClickListener(this);
+
+}
     return create;
     }
 
@@ -116,14 +116,18 @@ public class DeleteFlashCard extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        if(this.getContext()!=null){
         if(v.getId() == R.id.select){
 
 
+            assert getView() != null;
             Spinner getset=getView().findViewById(R.id.setnamesDEL);
             String setname= getset.getSelectedItem().toString();
 
-            DBHandler db=new DBHandler(this.getContext());
-            ArrayList<String> set= db.getSpecificSet(setname);
+            ArrayList<String> set;
+            try (DBHandler db = new DBHandler(this.getContext())) {
+                set = db.getSpecificSet(setname);
+            }
 
             ListView flashcardlist=getView().findViewById(R.id.list);
             ArrayAdapter<String> adapter =
@@ -135,32 +139,35 @@ public class DeleteFlashCard extends Fragment implements View.OnClickListener {
 
 
         }
-        if(v.getId() == R.id.DELETEBUTTON){
+        if(v.getId() == R.id.DELETEBUTTON ){
+            assert getView() != null;
             Spinner getset=getView().findViewById(R.id.setnamesDEL);
             String setname= getset.getSelectedItem().toString();
 
-            DBHandler db=new DBHandler(this.getContext());
-            ArrayList<String> set= db.getSpecificSetID(setname);
-            // FlashCardText
-            TextView debug=getView().findViewById(R.id.FlashCardText);
+            ListView flashcardlist;
+            ArrayList<String> set2;
+            try (DBHandler db = new DBHandler(this.getContext())) {
+                ArrayList<String> set = db.getSpecificSetID(setname);
+                // FlashCardText
+                TextView debug = getView().findViewById(R.id.FlashCardText);
 
-            ListView flashcardlist=getView().findViewById(R.id.list);
+                flashcardlist = getView().findViewById(R.id.list);
 
-           //Object selectedItem = flashcardlist.getSelectedItem();
-            SparseBooleanArray arr = flashcardlist.getCheckedItemPositions();
-            String x="";
-            for(int i=0; i<flashcardlist.getAdapter().getCount();i++){
-                if(arr.get(i)) {
-                   // x = x + i;
-                    x+=set.get(i);
-                    db.delSpecificSetID(set.get(i));
-                    //debug.setText(x);
+                //Object selectedItem = flashcardlist.getSelectedItem();
+                SparseBooleanArray arr = flashcardlist.getCheckedItemPositions();
+                String x = "";
+                for (int i = 0; i < flashcardlist.getAdapter().getCount(); i++) {
+                    if (arr.get(i)) {
+                        // x = x + i;
+                        x += set.get(i);
+                        db.delSpecificSetID(set.get(i));
+                        //debug.setText(x);
 
 
-
+                    }
                 }
+                set2 = db.getSpecificSet(setname);
             }
-            ArrayList<String> set2= db.getSpecificSet(setname);
 
             ArrayAdapter<String> adapter =
                     new ArrayAdapter<>
@@ -173,5 +180,5 @@ public class DeleteFlashCard extends Fragment implements View.OnClickListener {
 
         }
 
-    }
+    }}
 }

@@ -76,12 +76,14 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
 
         // Inflate the layout for this fragment
         View makingView = inflater.inflate(R.layout.fragment_make_flash_cards, container, false);
-        addbutton = (Button) makingView.findViewById(R.id.Add);
+        addbutton =makingView.findViewById(R.id.Add);
         addbutton.setOnClickListener(this);
         Spinner setnames=makingView.findViewById(R.id.setnames);
         //String[] SETS= new String[]{"set1", "set2", "set3"};
-        DBHandler db =new DBHandler(this.getContext());
-        ArrayList<String> Setnames=db.getSetNames();
+        ArrayList<String> Setnames;
+        try (DBHandler db = new DBHandler(this.getContext())) {
+            Setnames = db.getSetNames();
+        }
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>
                         (this.getContext(),
@@ -110,48 +112,52 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
+    if(this.getContext()!=null) {
+        if (v.getId() == R.id.Add) {
+            assert getView() != null;
+            if (!(getView().findViewById(R.id.setnames) == null)) {
 
-            if(v.getId() == R.id.Add && !(getView().findViewById(R.id.setnames) ==null)){
+                DBFlashCardStore n = new DBFlashCardStore(this.getContext());
 
-             DBFlashCardStore n = new DBFlashCardStore(this.getContext());
+                ArrayList<FlashCard> FlashCards = n.getFlashCards(this.getContext());
+                FlashCards.clear();
 
-             ArrayList<FlashCard> FlashCards = n.getFlashCards(this.getContext());
-             FlashCards.clear();
-
-                Spinner setnames=getView().findViewById(R.id.setnames);
-                String setname= setnames.getSelectedItem().toString();
+                Spinner setnames = getView().findViewById(R.id.setnames);
+                String setname = setnames.getSelectedItem().toString();
                 EditText textt = getView().findViewById(R.id.term);
                 String valuet = textt.getText().toString();
                 EditText textd = getView().findViewById(R.id.definition);
                 String valued = textd.getText().toString();
 
-                FlashCards.add(new FlashCard(setname,valuet, valued));
+                FlashCards.add(new FlashCard(setname, valuet, valued));
 
-            n.writeFlashCards(this.getContext(), FlashCards);
+                n.writeFlashCards(this.getContext(), FlashCards);
 
-             n.getFlashCards(this.getContext());
-
-
-             String namesStr = "";
-             for (FlashCard x : n.getFlashCards(this.getContext())) {
-            namesStr = namesStr + "\n" + x.getTerm() + " " + x.getDef();
-
-                 }//to do clear strings when done
+                n.getFlashCards(this.getContext());
 
 
+                String namesStr = "";
+                for (FlashCard x : n.getFlashCards(this.getContext())) {
+                    namesStr = namesStr + "\n" + x.getTerm() + " " + x.getDef();
 
-                DBHandler db=new DBHandler(this.getContext());
-                ArrayList<String> set= db.getSpecificSet(setname);
+                }//to do clear strings when done
 
-                ListView flashcardlist=getView().findViewById(R.id.listmakeflashcards);
+
+                ArrayList<String> set;
+                try (DBHandler db = new DBHandler(this.getContext())) {
+                    set = db.getSpecificSet(setname);
+                }
+
+                ListView flashcardlist = getView().findViewById(R.id.listmakeflashcards);
                 ArrayAdapter<String> adapter =
                         new ArrayAdapter<>
                                 (this.getContext(),
                                         android.R.layout.simple_list_item_multiple_choice,
-                                        set );
+                                        set);
                 flashcardlist.setAdapter(adapter);
 
+            }
         }
-
+    }
     }
     }
