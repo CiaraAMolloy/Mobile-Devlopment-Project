@@ -154,13 +154,20 @@ public class DeleteFlashCard extends Fragment implements View.OnClickListener {
                    // x = x + i;
                     x+=set.get(i);
                     db.delSpecificSetID(set.get(i));
-                    debug.setText(x);
+                    //debug.setText(x);
 
 
 
                 }
             }
+            ArrayList<String> set2= db.getSpecificSet(setname);
 
+            ArrayAdapter<String> adapter =
+                    new ArrayAdapter<>
+                            (this.getContext(),
+                                    android.R.layout.simple_list_item_multiple_choice,
+                                    set2 );
+            flashcardlist.setAdapter(adapter);
             //debug.setText(item);
 
 
