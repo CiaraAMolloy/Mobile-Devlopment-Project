@@ -53,21 +53,21 @@
             android:text="Sign in"
             android:textAllCaps="false" />
 
-    <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/keep_me_signed_in"
-                android:textColor="#FFFBF6"
-                android:hint="#FFFBF6"
-                android:layout_marginTop="15dp"
-                android:buttonTint="#FFFBF6"
-                tools:ignore="HardcodedText,MissingConstraints" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/keep_me_signed_in"
+            android:textColor="#FFFBF6"
+            android:hint="#FFFBF6"
+            android:layout_marginTop="15dp"
+            android:buttonTint="#FFFBF6"
+            tools:ignore="HardcodedText,MissingConstraints" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:background="#3fff" />
+        <View
+            android:id="@+id/view"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#3fff" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
