@@ -9,4 +9,7 @@
     <string name="add">ADD</string>
     <string name="subject">Subject</string>
     <string name="make_new_flashcard_set">make new flashcard set?</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="keep_me_signed_in">Keep me Signed in</string>
 </resources>
