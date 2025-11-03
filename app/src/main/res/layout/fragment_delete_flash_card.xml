@@ -31,11 +31,6 @@
         android:text="@string/delete"
         />
 
-    <TextView
-        android:id="@+id/FlashCardText"
-        android:layout_width="match_parent"
-        android:layout_height="163dp"
-        android:text="doesn't work" />
 
 
 </LinearLayout>
