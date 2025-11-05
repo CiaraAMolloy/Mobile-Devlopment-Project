@@ -21,6 +21,13 @@ public class DBHandler extends SQLiteOpenHelper{
     private static final String FIRST_COL = "setname";
     private static final String SECOND_COL = "term";
     private static final String LAST_COL = "definition";
+//login table
+
+    private static final String LOGIN_TABLE = "logindata";
+    private static final String LOGINID_COL = "loginID";
+    private static final String USER_COL = "username";
+    private static final String EMAIL_COL = "email";
+    private static final String PASS_COL = "password";
 
     private static final String SUBJECT_SET = "setsandsubjects";
     private static final String ID_COL_2 = "id";
@@ -64,9 +71,21 @@ public class DBHandler extends SQLiteOpenHelper{
         ContentValues values = new ContentValues();
         values.put( SUBJECT_SET_FIRST_COL, n.getSetName());
         values.put(SUBJECT_SET_LAST_COL , n.getSubject());
+        db.insert(LOGIN_TABLE, null, values);
+        db.close();
+    }
+
+    public void add(Login x){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put( USER_COL, x.getUser());
+        values.put(EMAIL_COL, x.getEmail());
+        //INSERT ANOTHER COLUMN
+        values.put(PASS_COL, x.getPass());
         db.insert(SUBJECT_SET, null, values);
         db.close();
     }
+
     // Get the whole list of names.
     public ArrayList<FlashCard> getFlashCards() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -111,6 +130,42 @@ public class DBHandler extends SQLiteOpenHelper{
         cursor.close();
         return sets;
     }
+    public ArrayList<String> getSpecificSetID(String set) {
+        SQLiteDatabase db = this.getReadableDatabase();
+// This will be the result.
+        ArrayList<String> sets= new ArrayList<>();
+        Cursor cursor =
+                db.rawQuery("SELECT  "+ID_COL+" " +
+                        "FROM " + TABLE_NAME+
+                        " WHERE "+SUBJECT_SET_FIRST_COL+" = \""+set+"\"",null);
+        if (cursor.moveToFirst()) {
+            do {
+               // sets.add(new Set(cursor.getString(0),cursor.getString(1)));
+                String temp=cursor.getString(0);
+                sets.add(temp);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return sets;
+    }
+    public void delSpecificSetID(String ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+// This will be the result.
+        ArrayList<String> sets= new ArrayList<>();
+       Cursor cursor =
+                db.rawQuery("DELETE FROM "+TABLE_NAME+" " +
+
+                        " WHERE "+ID_COL+" = \""+ID+"\"",null);
+        if (cursor.moveToFirst()) {
+            do {
+                // sets.add(new Set(cursor.getString(0),cursor.getString(1)));
+                String temp=cursor.getString(0);
+                sets.add(temp);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+    }
     public ArrayList<String> getSpecificSet(String set) {
         SQLiteDatabase db = this.getReadableDatabase();
 // This will be the result.
@@ -121,7 +176,7 @@ public class DBHandler extends SQLiteOpenHelper{
                         " WHERE "+SUBJECT_SET_FIRST_COL+" = \""+set+"\"",null);
         if (cursor.moveToFirst()) {
             do {
-               // sets.add(new Set(cursor.getString(0),cursor.getString(1)));
+                // sets.add(new Set(cursor.getString(0),cursor.getString(1)));
                 String temp=cursor.getString(0)+"="+cursor.getString(1);
                 sets.add(temp);
             } while (cursor.moveToNext());

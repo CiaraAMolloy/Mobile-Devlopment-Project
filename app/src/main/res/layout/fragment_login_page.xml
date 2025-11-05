@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/wallpaper"
-    tools:context=".MainActivity">
+    tools:context=".fragment_login_page">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,7 +31,7 @@
             android:layout_height="40dp"
             android:background="@drawable/custombutton"
             android:gravity="center"
-            android:hint="@string/password"
+            android:hint="password"
             android:textColorHint="#FFFBF6"
             tools:ignore="MissingConstraints" />
 
@@ -42,7 +41,7 @@
             android:gravity="center"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:hint="@string/username"
+            android:hint="username"
             android:textColorHint="#FFFBF6"
             android:background="@drawable/custombutton"
             tools:ignore="MissingConstraints" />
@@ -56,7 +55,7 @@
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/keep_me_signed_in"
+            android:text="keep_me_signed_in"
             android:textColor="#FFFBF6"
             android:hint="#FFFBF6"
             android:layout_marginTop="15dp"
@@ -76,41 +75,5 @@
             android:layout_marginTop="15dp"
             android:textColor="#FFFBF6"/>
     </LinearLayout>
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_layout"
-        android:layout_width="409dp"
-        android:layout_height="665dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
-        android:name="com.example.mobiledevlopmentproject.MakeFlashCards"
-        tools:layout="@layout/fragment_make_sets">
-
-    </androidx.fragment.app.FragmentContainerView>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:onClick="rotateFragment"
-        android:text="@string/next"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/FlashCardText"
-        android:layout_width="212dp"
-        android:layout_height="33dp"
-        android:text="hello, ciara molloy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
