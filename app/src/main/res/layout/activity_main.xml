@@ -8,109 +8,46 @@
     android:background="@drawable/wallpaper"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#3fff"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="10dp"
-        tools:layout_editor_absoluteX="-123dp"
-        tools:layout_editor_absoluteY="358dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/circle"
-            android:gravity="center"
-            android:text="placeholder"
-            android:textColor="#ffffff"
-            tools:ignore="MissingConstraints" />
-
-        <EditText
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:background="@drawable/custombutton"
-            android:gravity="center"
-            android:hint="@string/password"
-            android:textColorHint="#FFFBF6"
-            tools:ignore="MissingConstraints" />
-
-
-        <EditText
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:hint="@string/username"
-            android:textColorHint="#FFFBF6"
-            android:background="@drawable/custombutton"
-            tools:ignore="MissingConstraints" />
-
-        <Button
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:text="Sign in"
-            android:textAllCaps="false" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/keep_me_signed_in"
-            android:textColor="#FFFBF6"
-            android:hint="#FFFBF6"
-            android:layout_marginTop="15dp"
-            android:buttonTint="#FFFBF6"
-            tools:ignore="HardcodedText,MissingConstraints" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:background="#3fff" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Forget Password"
-            android:textSize="18dp"
-            android:layout_marginTop="15dp"
-            android:textColor="#FFFBF6"/>
-    </LinearLayout>
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_layout"
-        android:layout_width="409dp"
-        android:layout_height="665dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_login_page" />
 
-        android:name="com.example.mobiledevlopmentproject.MakeFlashCards"
-        tools:layout="@layout/fragment_make_sets">
-
-    </androidx.fragment.app.FragmentContainerView>
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/log_out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
         android:onClick="rotateFragment"
         android:text="@string/next"
-
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/logout_button" />
+
 
     <TextView
         android:id="@+id/FlashCardText"
-        android:layout_width="212dp"
-        android:layout_height="33dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="hello, ciara molloy"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
-
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

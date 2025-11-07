@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +59,19 @@ public class fragment_login_page extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_login_page, container, false);
+
+        Button loginButton = view.findViewById(R.id.login_button); // adjust ID to match your layout
+
+        loginButton.setOnClickListener(v -> {
+            // TODO: Add your login validation here
+
+            // When successful:
+            if (getActivity() instanceof MainActivity) {
+                ((MainActivity) getActivity()).showMainApp();
+            }
+        });
+
+        return view;
     }
 }
