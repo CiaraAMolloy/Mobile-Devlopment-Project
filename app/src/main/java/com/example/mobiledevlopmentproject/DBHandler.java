@@ -16,6 +16,8 @@ public class DBHandler extends SQLiteOpenHelper{
     private static final String DB_NAME = "FlashCarddb";
     // This may be used for migration in the future.
     private static final int DB_VERSION = 1;
+
+    //one table
     private static final String TABLE_NAME = "flashcards";
     private static final String ID_COL = "id";
     private static final String FIRST_COL = "setname";
@@ -28,7 +30,7 @@ public class DBHandler extends SQLiteOpenHelper{
     private static final String USER_COL = "username";
     private static final String EMAIL_COL = "email";
     private static final String PASS_COL = "password";
-
+// table
     private static final String SUBJECT_SET = "setsandsubjects";
     private static final String ID_COL_2 = "id";
     private static final String  SUBJECT_SET_FIRST_COL = "setname";
@@ -55,8 +57,10 @@ public class DBHandler extends SQLiteOpenHelper{
                         + SUBJECT_SET_FIRST_COL + " TEXT,"
                         + SUBJECT_SET_LAST_COL + " TEXT)";
         db.execSQL(query2);
+        //login
 
     }
+    //add methods
     public void add(FlashCard n) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
