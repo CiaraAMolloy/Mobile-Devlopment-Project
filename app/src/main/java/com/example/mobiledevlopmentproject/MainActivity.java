@@ -1,8 +1,10 @@
 package com.example.mobiledevlopmentproject;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 
 import androidx.activity.EdgeToEdge;
@@ -20,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     private static int current = 0;
     private static ArrayList<Fragment> fragments;
 
+    private SharedPreferences prefs;
+    private boolean loggedIn = false;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         fragments.add(new MakeFlashCards());
         fragments.add(new MakeSets());
         fragments.add(new DeleteFlashCard());
+        fragments.add(new CalendarPage());
 
 
 
@@ -61,6 +67,47 @@ public class MainActivity extends AppCompatActivity {
 /*
         TextView target = findViewById(R.id.FlashCardText);
         target.setText("Persistence says hello, " + namesStr + "!");*/
+
+        Button logoutButton = findViewById(R.id.logout_button);
+        logoutButton.setOnClickListener(v -> {
+            SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+            prefs.edit().putBoolean("loggedIn", false).apply();
+
+            showLoginFragment();
+        });
+
+        prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        loggedIn = prefs.getBoolean("loggedIn", false);
+
+        if (savedInstanceState == null) {
+            if (!loggedIn) {
+                showLoginFragment();
+            } else {
+                showMainApp();
+            }
+        }
+    }
+
+    public void showLoginFragment() {
+        Button logoutButton = findViewById(R.id.logout_button);
+        if (logoutButton != null) logoutButton.setVisibility(View.GONE);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_layout, new fragment_login_page());
+        ft.commit();
+    }
+    public void showMainApp() {
+        Button logoutButton = findViewById(R.id.logout_button);
+        if (logoutButton != null) logoutButton.setVisibility(View.VISIBLE);
+
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("loggedIn", true);
+        editor.apply();
+
+        current = 0;
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment_layout, fragments.get(current));
+        ft.commit();
     }
     public void rotateFragment(View view){
         if (current == fragments.size()) {
