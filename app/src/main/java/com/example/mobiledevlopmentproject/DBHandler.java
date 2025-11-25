@@ -57,6 +57,18 @@ public class DBHandler extends SQLiteOpenHelper{
                         + SUBJECT_SET_FIRST_COL + " TEXT,"
                         + SUBJECT_SET_LAST_COL + " TEXT)";
         db.execSQL(query2);
+        /*    private static final String LOGIN_TABLE = "logindata";
+    private static final String LOGINID_COL = "loginID";
+    private static final String USER_COL = "username";
+    private static final String EMAIL_COL = "email";
+    private static final String PASS_COL = "password";*/
+        String query3 =
+                "CREATE TABLE " + LOGIN_TABLE + " ("
+                        + LOGINID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + USER_COL + " TEXT,"
+                        + EMAIL_COL+ " TEXT,"
+                        + PASS_COL + " TEXT)";
+        db.execSQL(query3);
         //login
 
     }
@@ -75,7 +87,7 @@ public class DBHandler extends SQLiteOpenHelper{
         ContentValues values = new ContentValues();
         values.put( SUBJECT_SET_FIRST_COL, n.getSetName());
         values.put(SUBJECT_SET_LAST_COL , n.getSubject());
-        db.insert(LOGIN_TABLE, null, values);
+        db.insert(SUBJECT_SET, null, values);
         db.close();
     }
 
@@ -86,7 +98,7 @@ public class DBHandler extends SQLiteOpenHelper{
         values.put(EMAIL_COL, x.getEmail());
         //INSERT ANOTHER COLUMN
         values.put(PASS_COL, x.getPass());
-        db.insert(SUBJECT_SET, null, values);
+        db.insert(LOGIN_TABLE , null, values);
         db.close();
     }
 
