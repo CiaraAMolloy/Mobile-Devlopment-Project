@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         fragments.add(new MakeSets());
         fragments.add(new DeleteFlashCard());
         fragments.add(new CalendarPage());
+        fragments.add(new FlashcardPlayerFragment());
 
 
 
@@ -45,28 +46,11 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        /*DBFlashCardStore n = new DBFlashCardStore(this);
-        ArrayList<FlashCard> FlashCards = n.getFlashCards(this);
-        //EditText text = findViewById(R.id.term);
-        //String value = text.getText().toString();
-
-        FlashCards.add(new FlashCard("", ""));
-
-        n.writeFlashCards(this, FlashCards);
-
-        n.getFlashCards(this);
-        String namesStr ="";
-        for (FlashCard x : n.getFlashCards(this)) {
-            namesStr = namesStr + "\n" + x.getTerm() + " " + x.getDef();
-
-        }*/
 
 
 
 
-/*
-        TextView target = findViewById(R.id.FlashCardText);
-        target.setText("Persistence says hello, " + namesStr + "!");*/
+
 
         Button logoutButton = findViewById(R.id.logout_button);
         logoutButton.setOnClickListener(v -> {
@@ -96,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         ft.replace(R.id.fragment_layout, new fragment_login_page());
         ft.commit();
     }
+
     public void showMainApp() {
         Button logoutButton = findViewById(R.id.logout_button);
         if (logoutButton != null) logoutButton.setVisibility(View.VISIBLE);
