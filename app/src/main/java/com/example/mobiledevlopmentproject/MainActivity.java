@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         fragments.add(new DeleteFlashCard());
         fragments.add(new CalendarPage());
         fragments.add(new FlashcardPlayerFragment());
+        fragments.add(new LibraryFragment());
 
 
 

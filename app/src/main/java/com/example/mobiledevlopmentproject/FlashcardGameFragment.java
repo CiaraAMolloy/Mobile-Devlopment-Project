@@ -30,6 +30,8 @@ public class FlashcardGameFragment extends Fragment {
     private static final String ARG_MODE = "mode";
     private static final String ARG_LIMIT_SECONDS = "limit_seconds";
 
+    private Button btnShare;
+
 
 
     /**
@@ -207,6 +209,8 @@ public class FlashcardGameFragment extends Fragment {
 
         btnCheck.setOnClickListener(v -> onCheckAnswer());
         btnPause.setOnClickListener(v -> onPauseResumeClicked());
+        btnShare = view.findViewById(R.id.btnShare);
+        btnShare.setOnClickListener(v -> shareScore());
 
         // When the fragment is first shown, user cannot answer yet.
         // The game starts only after the 3-second pre-countdown finishes.
@@ -543,6 +547,7 @@ public class FlashcardGameFragment extends Fragment {
         preHandler.removeCallbacks(preCountdownRunnable);
 
         long totalMillis = elapsedBeforePause;
+        saveScoreToDB(correctCount + "/" + totalCards, formatMillisToClock(totalMillis));
         StringBuilder sb = new StringBuilder();
         sb.append("Finished all cards!\n");
         sb.append("Time: ").append(formatMillisToClock(totalMillis)).append("\n");
@@ -564,6 +569,8 @@ public class FlashcardGameFragment extends Fragment {
         status = GameStatus.FINISHED;
         timerHandler.removeCallbacks(timerRunnable);
         preHandler.removeCallbacks(preCountdownRunnable);
+
+        saveScoreToDB(correctCount + " (Timed)", formatMillisToClock(getActiveMillis()));
 
         StringBuilder sb = new StringBuilder();
         if (finishedAllBeforeTimeUp) {
@@ -594,6 +601,9 @@ public class FlashcardGameFragment extends Fragment {
         if (tvQuestion != null) tvQuestion.setText("");
         if (tvProgress != null) tvProgress.setText("");
         if (tvFeedback != null) tvFeedback.setText(resultText);
+        if (btnShare != null) {
+            btnShare.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -610,5 +620,43 @@ public class FlashcardGameFragment extends Fragment {
         super.onDestroyView();
         timerHandler.removeCallbacks(timerRunnable);
         preHandler.removeCallbacks(preCountdownRunnable);
+    }
+
+    /**
+     * Helper method to save the game result to the Leaderboard database.
+     */
+    private void saveScoreToDB(String scoreVal, String timeVal) {
+        if (getContext() == null) return;
+
+        // Get current system time
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String currentDate = sdf.format(new java.util.Date());
+
+        // Use the NEW separate database handler
+        DBLeaderboard db = new DBLeaderboard(getContext());
+        db.addScore(setName, scoreVal, timeVal, currentDate);
+
+        // Optional: Show a toast to confirm saving
+        Toast.makeText(getContext(), "Score Saved to Leaderboard!", Toast.LENGTH_SHORT).show();
+    }
+
+
+    /**
+     * Share the game result using Android System Share Sheet.
+     */
+    private void shareScore() {
+        // Get the feedback text (or build your own string)
+        String scoreText = tvFeedback.getText().toString();
+
+        String shareBody = "I just played Flashcards!\n" + scoreText + "\nCan you beat my score?";
+
+        // Create the Intent
+        android.content.Intent sharingIntent = new android.content.Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "My Flashcard Score");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+
+        // Launch the system chooser
+        startActivity(android.content.Intent.createChooser(sharingIntent, "Share via"));
     }
 }

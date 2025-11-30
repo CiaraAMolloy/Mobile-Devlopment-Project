@@ -18,7 +18,8 @@
             android:layout_weight="1"
             android:text="Game mode"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
 
         <TextView
             android:id="@+id/tvTimer"
@@ -26,7 +27,8 @@
             android:layout_height="wrap_content"
             android:text="00:00"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
     </LinearLayout>
 
     <!-- Big countdown: 3 -> 2 -> 1 -> Go! -->
@@ -40,7 +42,8 @@
         android:gravity="center_horizontal"
         android:paddingTop="24dp"
         android:paddingBottom="24dp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        />
 
     <!-- Question text -->
     <TextView
@@ -51,7 +54,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:paddingTop="16dp"
-        android:paddingBottom="8dp" />
+        android:paddingBottom="8dp"
+        />
 
     <!-- Progress, e.g. 2/10 -->
     <TextView
@@ -60,7 +64,8 @@
         android:layout_height="wrap_content"
         android:text="0/0"
         android:textSize="14sp"
-        android:paddingBottom="4dp" />
+        android:paddingBottom="4dp"
+        />
 
     <!-- Feedback: ✓ Correct / ✗ Wrong -->
     <TextView
@@ -71,7 +76,8 @@
         android:textSize="16sp"
         android:textColor="#FF4444"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp" />
+        android:paddingBottom="8dp"
+        />
 
     <!-- Answer input -->
     <EditText
@@ -82,7 +88,8 @@
         android:imeOptions="actionDone"
         android:singleLine="true"
         android:padding="8dp"
-        android:background="@android:drawable/edit_text" />
+        android:background="@android:drawable/edit_text"
+        />
 
     <!-- Buttons row: Check + Pause -->
     <LinearLayout
@@ -96,7 +103,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Check" />
+            android:text="Check"
+            />
 
         <Button
             android:id="@+id/btnPause"
@@ -104,7 +112,20 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Pause"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="8dp"
+            />
+
+        <Button
+            android:id="@+id/btnShare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📤 Share Result"
+            android:backgroundTint="#673AB7"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            />
+
     </LinearLayout>
+
 
 </LinearLayout>
