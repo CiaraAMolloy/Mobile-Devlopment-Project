@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -91,7 +92,7 @@ public class MakeSets extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.Addset){
-
+            DBHandler db=new DBHandler(this.getContext());
             DBSetStore n = new DBSetStore(this.getContext());
 
             ArrayList<Set> sets = n.getSets(this.getContext());
@@ -102,7 +103,14 @@ public class MakeSets extends Fragment implements View.OnClickListener{
 
             EditText Setval = getView().findViewById(R.id.Set);
             String Setvalue = Setval.getText().toString();
-
+           int i= db.CheckinDatabase(Setvalue);
+           if(i>0) {
+               TextView error = getView().findViewById(R.id.MESSAGE);
+               error.setText("already made a set with this name");
+           }
+           else{
+               TextView error = getView().findViewById(R.id.MESSAGE);
+               error.setText(Setvalue+ " has been created!");
 
             sets.add(new Set(Setvalue,Sub));
 
@@ -114,9 +122,15 @@ public class MakeSets extends Fragment implements View.OnClickListener{
             StringBuilder namesStr = new StringBuilder();
             for (Set x : n.getSets(this.getContext())) {
                 namesStr.append("\n").append(x.getSubject()).append(" ").append(x.getSetName());
+            }
+           }
+        }
+          /*  else{
+               TextView error = getView().findViewById(R.id.MESSAGE);
+               error.setText("No set created to put flashcard in/nplease make a set or choose a set to put this flashcard in");
 
+           }*/
             }//to do clear strings when done
 
         }
-    }
-}
+

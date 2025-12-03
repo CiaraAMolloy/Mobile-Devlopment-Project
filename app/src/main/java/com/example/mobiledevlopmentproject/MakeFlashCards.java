@@ -165,7 +165,7 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
             else{
                 
                 TextView error = getView().findViewById(R.id.ERRORMESSAGE);
-                error.setText("No set created to put flashcard in/nplease make a set or choose a set to put this flashcard in");
+                error.setText("It seems like you didn't make a set yet\nplease make a set or choose a set to put this flashcard in!");
                
             }
         }

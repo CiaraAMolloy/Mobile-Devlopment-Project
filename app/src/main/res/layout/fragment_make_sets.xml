@@ -39,5 +39,11 @@
         android:text="@string/add"
 
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+        android:text=""
+        android:id="@+id/MESSAGE"
+        />
 
 </LinearLayout>

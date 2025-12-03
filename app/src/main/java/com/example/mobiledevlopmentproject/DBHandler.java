@@ -164,6 +164,33 @@ public class DBHandler extends SQLiteOpenHelper{
         cursor.close();
         return sets;
     }
+    public int CheckinDatabase(String setname){
+        int count=0;
+        SQLiteDatabase db = this.getReadableDatabase();
+// This will be the result.
+        ArrayList<String> sets= new ArrayList<>();
+        Cursor cursor =
+                db.rawQuery("SELECT  "+ "Count(*)"+" " +
+                        "FROM " + SUBJECT_SET+
+                        " WHERE "+SUBJECT_SET_FIRST_COL+" = \""+setname+"\"",null);
+        if (cursor.moveToFirst()) {
+            do {
+                // sets.add(new Set(cursor.getString(0),cursor.getString(1)));
+              //  String temp=cursor.getString(0);
+
+                count= Integer.parseInt(cursor.getString(0));
+
+
+            } while (cursor.moveToNext());
+        }
+        else {
+
+        }
+
+
+        cursor.close();
+        return count;
+    }
     public void delSpecificSetID(String ID) {
         SQLiteDatabase db = this.getReadableDatabase();
 // This will be the result.
