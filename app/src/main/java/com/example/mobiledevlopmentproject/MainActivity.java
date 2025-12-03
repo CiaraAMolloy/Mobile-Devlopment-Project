@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fragments = new ArrayList<>();
+        fragments.add(new HPage());
         fragments.add(new MakeFlashCards());
         fragments.add(new MakeSets());
         fragments.add(new DeleteFlashCard());

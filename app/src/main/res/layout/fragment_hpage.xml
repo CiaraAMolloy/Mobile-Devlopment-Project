@@ -31,11 +31,25 @@
             android:text="View Calendar" />
 
         <Button
-            android:id="@+id/efc"
+            android:id="@+id/es"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:gravity="center"
-            android:text="Edit Flashcards" />
+            android:text="Edit Sets" />
+
+        <Button
+            android:id="@+id/mfc"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="Make a Flashcard" />
+
+        <Button
+            android:id="@+id/dfc"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="Delete Flashcard" />
 
         <Button
             android:id="@+id/pfcg"

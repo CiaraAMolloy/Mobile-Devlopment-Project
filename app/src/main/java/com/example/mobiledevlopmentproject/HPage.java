@@ -41,7 +41,11 @@ public class HPage extends Fragment implements View.OnClickListener{
     private static int current = 0;
     private static ArrayList<Fragment> fragments;
 
-    Button addbutton;
+    Button addViewbutton;
+    Button addEditSbutton;
+    Button addMakeFCbutton;
+    Button addDeleteFCbutton;
+    Button addPlaybutton;
 
     public HPage() {
         // Required empty public constructor
@@ -89,9 +93,16 @@ public class HPage extends Fragment implements View.OnClickListener{
 
         View makingView = inflater.inflate(R.layout.fragment_hpage, container, false);
         // Inflate the layout for this fragment
-        addbutton = makingView.findViewById(R.id.Add);
-        addbutton.setOnClickListener(this);
-
+        addViewbutton = makingView.findViewById(R.id.vcdr);
+        addViewbutton.setOnClickListener(this);
+        addEditSbutton = makingView.findViewById(R.id.es);
+        addEditSbutton.setOnClickListener(this);
+        addMakeFCbutton = makingView.findViewById(R.id.mfc);
+        addMakeFCbutton.setOnClickListener(this);
+        addDeleteFCbutton = makingView.findViewById(R.id.dfc);
+        addDeleteFCbutton.setOnClickListener(this);
+        addPlaybutton = makingView.findViewById(R.id.pfcg);
+        addPlaybutton.setOnClickListener(this);
 
         return inflater.inflate(R.layout.fragment_hpage, container, false);
     }
@@ -100,12 +111,64 @@ public class HPage extends Fragment implements View.OnClickListener{
     public void onClick(View v){
 
         if(this.getContext()!=null){
-            if(v.getId() == R.id.Add){
+            if(v.getId() == R.id.vcdr){
+                assert getView() != null;
+                if (current == fragments.size()) {
+                    current = 3;
+                }
+                Fragment fragment = fragments.get(3);
+
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                fragmentTransaction.replace(R.id.fragment_layout, fragment);
+                fragmentTransaction.commit();
+            }
+            if(v.getId() == R.id.es){
+                assert getView() != null;
+                if (current == fragments.size()) {
+                    current = 1;
+                }
+                Fragment fragment = fragments.get(1);
+
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                fragmentTransaction.replace(R.id.fragment_layout, fragment);
+                fragmentTransaction.commit();
+            }
+            if(v.getId() == R.id.mfc){
                 assert getView() != null;
                 if (current == fragments.size()) {
                     current = 0;
                 }
-                Fragment fragment = fragments.get(current++);
+                Fragment fragment = fragments.get(0);
+
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                fragmentTransaction.replace(R.id.fragment_layout, fragment);
+                fragmentTransaction.commit();
+            }
+            if(v.getId() == R.id.dfc){
+                assert getView() != null;
+                if (current == fragments.size()) {
+                    current = 2;
+                }
+                Fragment fragment = fragments.get(2);
+
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                fragmentTransaction.replace(R.id.fragment_layout, fragment);
+                fragmentTransaction.commit();
+            }
+            if(v.getId() == R.id.pfcg){
+                assert getView() != null;
+                if (current == fragments.size()) {
+                    current = 4;
+                }
+                Fragment fragment = fragments.get(4);
 
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
