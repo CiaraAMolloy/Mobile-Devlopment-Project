@@ -72,7 +72,13 @@ public class MakeSets extends Fragment implements View.OnClickListener{
         addbutton.setOnClickListener(this);
         Spinner Subjects=makingView.findViewById(R.id.Subject);
         ArrayList<String> SubjectList=new ArrayList<>();
-        SubjectList.add("maths");
+        SubjectList.add("Maths");
+        SubjectList.add("English");
+        SubjectList.add("Irish");
+        SubjectList.add("Music");
+        SubjectList.add("DCG");
+        SubjectList.add("Computer Science");
+
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>
                         (this.getContext(),

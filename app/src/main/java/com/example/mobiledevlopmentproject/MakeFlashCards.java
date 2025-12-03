@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -115,7 +118,6 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
     if(this.getContext()!=null) {
         if (v.getId() == R.id.Add) {
             assert getView() != null;
-            if (!(getView().findViewById(R.id.setnames) == null)) {
 
                 DBFlashCardStore n = new DBFlashCardStore(this.getContext());
 
@@ -123,7 +125,10 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
                 FlashCards.clear();
 
                 Spinner setnames = getView().findViewById(R.id.setnames);
+            if (setnames.getSelectedItem() != null) {
+
                 String setname = setnames.getSelectedItem().toString();
+
                 EditText textt = getView().findViewById(R.id.term);
                 String valuet = textt.getText().toString();
                 EditText textd = getView().findViewById(R.id.definition);
@@ -156,6 +161,12 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
                                         set);
                 flashcardlist.setAdapter(adapter);
 
+            }
+            else{
+                
+                TextView error = getView().findViewById(R.id.ERRORMESSAGE);
+                error.setText("No set created to put flashcard in/nplease make a set or choose a set to put this flashcard in");
+               
             }
         }
     }

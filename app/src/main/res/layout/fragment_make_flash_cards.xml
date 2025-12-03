@@ -57,6 +57,12 @@
         tools:layout_editor_absoluteX="161dp"
         tools:layout_editor_absoluteY="677dp"
         />
+    <TextView
+        android:id="@+id/ERRORMESSAGE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        />
     <ListView
         android:id="@+id/listmakeflashcards"
         android:layout_width="match_parent"
