@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/wallpaper"
+    tools:context=".HPage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="930dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp"
+        tools:layout_editor_absoluteX="-123dp"
+        tools:layout_editor_absoluteY="358dp">
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:padding="250dp"
+            android:text="Home Page"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/vcdr"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="View Calendar" />
+
+        <Button
+            android:id="@+id/efc"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="Edit Flashcards" />
+
+        <Button
+            android:id="@+id/pfcg"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="Play Flashcard Game" />
+
+    </LinearLayout>
+</FrameLayout>
