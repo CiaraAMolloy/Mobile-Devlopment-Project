@@ -30,35 +30,36 @@
             android:layout_width="250dp"
             android:layout_height="62dp"
             android:gravity="center"
-            android:text="View Calendar" />
+            android:text="@string/view_calendar"
+            />
 
         <Button
             android:id="@+id/es"
             android:layout_width="250dp"
             android:layout_height="95dp"
             android:gravity="center"
-            android:text="Edit Sets" />
+            android:text="@string/make_sets" />
 
         <Button
             android:id="@+id/mfc"
             android:layout_width="250dp"
             android:layout_height="73dp"
             android:gravity="center"
-            android:text="Make a Flashcard" />
+            android:text="@string/make_a_flashcard" />
 
         <Button
             android:id="@+id/dfc"
             android:layout_width="250dp"
             android:layout_height="110dp"
             android:gravity="center"
-            android:text="Delete Flashcard" />
+            android:text="@string/delete_view_flashcards" />
 
         <Button
             android:id="@+id/pfcg"
             android:layout_width="250dp"
             android:layout_height="102dp"
             android:gravity="center"
-            android:text="Play Flashcard Game" />
+            android:text="@string/play_flashcard_game" />
 
         <TextView
             android:id="@+id/buttonworkq"

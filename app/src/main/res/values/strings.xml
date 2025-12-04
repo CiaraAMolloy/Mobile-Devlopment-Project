@@ -19,4 +19,9 @@
     <string name="delete">Delete</string>
     <string name="log_out">Log Out</string>
     <string name="home_page">Home Page</string>
+    <string name="play_flashcard_game">Play Flashcard Game</string>
+    <string name="delete_view_flashcards">Delete/View Flashcards</string>
+    <string name="view_calendar">View Calendar</string>
+    <string name="make_a_flashcard">Make a Flashcard</string>
+    <string name="make_sets">Make Sets</string>
 </resources>

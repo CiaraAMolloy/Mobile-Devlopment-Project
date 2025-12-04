@@ -57,11 +57,7 @@ public class DBHandler extends SQLiteOpenHelper{
                         + SUBJECT_SET_FIRST_COL + " TEXT,"
                         + SUBJECT_SET_LAST_COL + " TEXT)";
         db.execSQL(query2);
-        /*    private static final String LOGIN_TABLE = "logindata";
-    private static final String LOGINID_COL = "loginID";
-    private static final String USER_COL = "username";
-    private static final String EMAIL_COL = "email";
-    private static final String PASS_COL = "password";*/
+
         String query3 =
                 "CREATE TABLE " + LOGIN_TABLE + " ("
                         + LOGINID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
