@@ -48,6 +48,25 @@ View cards in a set:
 
 4)you should now see the list of flashcards 
 
+Play the flashcard game
+
+1) In home click play flashcard game
+
+2) click play game
+
+3) select a set
+
+4) choose a finish all cards or timed game
+
+5) type the answers (no terms will appear if you do not make sets)
+
+Share the results:
+
+after you have played a game you can then click share result as text
+
+
+
+
 
 
 
