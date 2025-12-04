@@ -18,4 +18,5 @@
     <string name="keep_me_signed_in">Keep me signed in</string>
     <string name="delete">Delete</string>
     <string name="log_out">Log Out</string>
+    <string name="home_page">Home Page</string>
 </resources>

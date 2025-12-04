@@ -6,9 +6,11 @@
     android:background="@drawable/wallpaper"
     tools:context=".HPage">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="930dp"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="10dp"
@@ -16,47 +18,55 @@
         tools:layout_editor_absoluteY="358dp">
 
         <TextView
-            android:layout_width="350dp"
-            android:layout_height="100dp"
+            android:layout_width="328dp"
+            android:layout_height="93dp"
             android:gravity="center"
-            android:padding="250dp"
-            android:text="Home Page"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/white"
+            android:text="@string/home_page"
+            />
 
         <Button
             android:id="@+id/vcdr"
             android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_height="62dp"
             android:gravity="center"
             android:text="View Calendar" />
 
         <Button
             android:id="@+id/es"
             android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_height="95dp"
             android:gravity="center"
             android:text="Edit Sets" />
 
         <Button
             android:id="@+id/mfc"
             android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_height="73dp"
             android:gravity="center"
             android:text="Make a Flashcard" />
 
         <Button
             android:id="@+id/dfc"
             android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_height="110dp"
             android:gravity="center"
             android:text="Delete Flashcard" />
 
         <Button
             android:id="@+id/pfcg"
             android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_height="102dp"
             android:gravity="center"
             android:text="Play Flashcard Game" />
+
+        <TextView
+            android:id="@+id/buttonworkq"
+            android:layout_width="350dp"
+            android:layout_height="131dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </FrameLayout>

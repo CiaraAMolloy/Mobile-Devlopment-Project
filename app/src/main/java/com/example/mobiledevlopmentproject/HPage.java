@@ -10,16 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,14 +77,14 @@ public class HPage extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        fragments = new ArrayList<>();
+      /*  fragments = new ArrayList<>();
         fragments.add(new MakeFlashCards());
         fragments.add(new MakeSets());
         fragments.add(new DeleteFlashCard());
         fragments.add(new CalendarPage());
         fragments.add(new FlashcardPlayerFragment());
         fragments.add(new LibraryFragment());
-
+*/
         View makingView = inflater.inflate(R.layout.fragment_hpage, container, false);
         // Inflate the layout for this fragment
         addViewbutton = makingView.findViewById(R.id.vcdr);
@@ -104,77 +98,67 @@ public class HPage extends Fragment implements View.OnClickListener{
         addPlaybutton = makingView.findViewById(R.id.pfcg);
         addPlaybutton.setOnClickListener(this);
 
-        return inflater.inflate(R.layout.fragment_hpage, container, false);
+        return makingView;
     }
 
     @Override
     public void onClick(View v){
 
         if(this.getContext()!=null){
+
             if(v.getId() == R.id.vcdr){
-                assert getView() != null;
-                if (current == fragments.size()) {
-                    current = 3;
-                }
-                Fragment fragment = fragments.get(3);
 
-                FragmentManager fragmentManager = getFragmentManager();
+                Fragment fragment = new CalendarPage();
+
+                FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                 fragmentTransaction.replace(R.id.fragment_layout, fragment);
                 fragmentTransaction.commit();
             }
-            if(v.getId() == R.id.es){
-                assert getView() != null;
-                if (current == fragments.size()) {
-                    current = 1;
-                }
-                Fragment fragment = fragments.get(1);
+            else if(v.getId() == R.id.es){
 
-                FragmentManager fragmentManager = getFragmentManager();
+                Fragment fragment = new MakeSets();//ragments.get(1);
+
+                FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                 fragmentTransaction.replace(R.id.fragment_layout, fragment);
                 fragmentTransaction.commit();
             }
-            if(v.getId() == R.id.mfc){
-                assert getView() != null;
-                if (current == fragments.size()) {
-                    current = 0;
-                }
-                Fragment fragment = fragments.get(0);
+            else if(v.getId() == R.id.mfc){
+                Fragment fragment = new MakeFlashCards();
 
-                FragmentManager fragmentManager = getFragmentManager();
+                FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                 fragmentTransaction.replace(R.id.fragment_layout, fragment);
                 fragmentTransaction.commit();
             }
-            if(v.getId() == R.id.dfc){
-                assert getView() != null;
-                if (current == fragments.size()) {
-                    current = 2;
-                }
-                Fragment fragment = fragments.get(2);
+            else if(v.getId() == R.id.dfc){
 
-                FragmentManager fragmentManager = getFragmentManager();
+                Fragment fragment =new DeleteFlashCard();
+
+                FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                 fragmentTransaction.replace(R.id.fragment_layout, fragment);
                 fragmentTransaction.commit();
             }
-            if(v.getId() == R.id.pfcg){
-                assert getView() != null;
-                if (current == fragments.size()) {
-                    current = 4;
-                }
-                Fragment fragment = fragments.get(4);
+            else if(v.getId() == R.id.pfcg){
 
-                FragmentManager fragmentManager = getFragmentManager();
+
+
+                Fragment fragment = new LibraryFragment();
+
+                FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                fragmentTransaction.replace(R.id.fragment_layout, fragment);
+//fragmentManager.beginTransaction().replace(R.id.flContent, fragment)
+//            .commit();
+                fragmentTransaction.replace(R.id.fragment_layout, new LibraryFragment());
                 fragmentTransaction.commit();
+
+
             }
             }
         }
