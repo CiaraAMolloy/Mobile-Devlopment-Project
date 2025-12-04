@@ -31,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         fragments = new ArrayList<>();
         fragments.add(new HPage());
-        fragments.add(new MakeFlashCards());
-        fragments.add(new MakeSets());
-        fragments.add(new DeleteFlashCard());
         fragments.add(new CalendarPage());
-        fragments.add(new FlashcardPlayerFragment());
+        fragments.add(new MakeSets());
+        fragments.add(new MakeFlashCards());
+        fragments.add(new DeleteFlashCard());
+
         fragments.add(new LibraryFragment());
 
 
@@ -101,6 +101,17 @@ public class MainActivity extends AppCompatActivity {
             current = 0;
         }
         Fragment fragment = fragments.get(current++);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.replace(R.id.fragment_layout, fragment);
+        fragmentTransaction.commit();
+    }
+    public void GoHome(View view){
+
+        Fragment fragment =new HPage();
+        current =0;
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
