@@ -122,61 +122,74 @@ if(!(this.getContext() ==null)) {
 
             assert getView() != null;
             Spinner getset=getView().findViewById(R.id.setnamesDEL);
-            String setname= getset.getSelectedItem().toString();
+            if(getset.getSelectedItem()==null){
+                TextView error = getView().findViewById(R.id.errondel);
+                error.setText("No set selected :(\n please either make or select a set");
 
-            ArrayList<String> set;
-            try (DBHandler db = new DBHandler(this.getContext())) {
-                set = db.getSpecificSet(setname);
             }
+            else {
+                String setname = getset.getSelectedItem().toString();
 
-            ListView flashcardlist=getView().findViewById(R.id.list);
-            ArrayAdapter<String> adapter =
-                    new ArrayAdapter<>
-                            (this.getContext(),
-                                    android.R.layout.simple_list_item_multiple_choice,
-                                    set );
-            flashcardlist.setAdapter(adapter);
+                ArrayList<String> set;
+                try (DBHandler db = new DBHandler(this.getContext())) {
+                    set = db.getSpecificSet(setname);
+                }
 
+                ListView flashcardlist = getView().findViewById(R.id.list);
+                ArrayAdapter<String> adapter =
+                        new ArrayAdapter<>
+                                (this.getContext(),
+                                        android.R.layout.simple_list_item_multiple_choice,
+                                        set);
+                flashcardlist.setAdapter(adapter);
+            }
 
         }
         if(v.getId() == R.id.DELETEBUTTON ){
             assert getView() != null;
             Spinner getset=getView().findViewById(R.id.setnamesDEL);
-            String setname= getset.getSelectedItem().toString();
+            if( getset.getSelectedItem()==null){
+                TextView error = getView().findViewById(R.id.errondel);
+                error.setText("No flashcard selected :(\n please select a flashcard first to delete it");
 
-            ListView flashcardlist;
-            ArrayList<String> set2;
-            try (DBHandler db = new DBHandler(this.getContext())) {
-                ArrayList<String> set = db.getSpecificSetID(setname);
-                // FlashCardText
-               // TextView debug = getView().findViewById(R.id.FlashCardText);
-
-                flashcardlist = getView().findViewById(R.id.list);
-
-                //Object selectedItem = flashcardlist.getSelectedItem();
-                SparseBooleanArray arr = flashcardlist.getCheckedItemPositions();
-                String x = "";
-                for (int i = 0; i < flashcardlist.getAdapter().getCount(); i++) {
-                    if (arr.get(i)) {
-                        // x = x + i;
-                        x += set.get(i);
-                        db.delSpecificSetID(set.get(i));
-                        //debug.setText(x);
-
-
-                    }
-                }
-                set2 = db.getSpecificSet(setname);
             }
+            else {
+                String setname = getset.getSelectedItem().toString();
 
-            ArrayAdapter<String> adapter =
-                    new ArrayAdapter<>
-                            (this.getContext(),
-                                    android.R.layout.simple_list_item_multiple_choice,
-                                    set2 );
-            flashcardlist.setAdapter(adapter);
-            //debug.setText(item);
+                ListView flashcardlist;
+                ArrayList<String> set2;
+                try (DBHandler db = new DBHandler(this.getContext())) {
+                    ArrayList<String> set = db.getSpecificSetID(setname);
+                    // FlashCardText
+                    // TextView debug = getView().findViewById(R.id.FlashCardText);
 
+                    flashcardlist = getView().findViewById(R.id.list);
+
+                    //Object selectedItem = flashcardlist.getSelectedItem();
+                    SparseBooleanArray arr = flashcardlist.getCheckedItemPositions();
+                    String x = "";
+                    for (int i = 0; i < flashcardlist.getAdapter().getCount(); i++) {
+                        if (arr.get(i)) {
+                            // x = x + i;
+                            x += set.get(i);
+                            db.delSpecificSetID(set.get(i));
+                            //debug.setText(x);
+
+
+                        }
+                    }
+                    set2 = db.getSpecificSet(setname);
+
+                }
+
+                ArrayAdapter<String> adapter =
+                        new ArrayAdapter<>
+                                (this.getContext(),
+                                        android.R.layout.simple_list_item_multiple_choice,
+                                        set2);
+                flashcardlist.setAdapter(adapter);
+                //debug.setText(item);
+            }
 
         }
 

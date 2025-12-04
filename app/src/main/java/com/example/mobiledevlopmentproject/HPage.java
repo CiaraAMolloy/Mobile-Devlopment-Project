@@ -153,8 +153,7 @@ public class HPage extends Fragment implements View.OnClickListener{
 
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//fragmentManager.beginTransaction().replace(R.id.flContent, fragment)
-//            .commit();
+
                 fragmentTransaction.replace(R.id.fragment_layout, new LibraryFragment());
                 fragmentTransaction.commit();
 

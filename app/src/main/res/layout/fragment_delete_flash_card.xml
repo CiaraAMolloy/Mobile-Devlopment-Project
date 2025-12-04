@@ -19,6 +19,13 @@
         android:text="select"
         />
 
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:id="@+id/errondel"
+    android:text=""
+    />
+
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
