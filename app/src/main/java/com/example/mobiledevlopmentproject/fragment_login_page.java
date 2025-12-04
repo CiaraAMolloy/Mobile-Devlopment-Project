@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,7 +67,27 @@ public class fragment_login_page extends Fragment {
 
         loginButton.setOnClickListener(v -> {
             // TODO: Add your login validation here
+            /*
+            Spinner Subject=getView().findViewById(R.id.Subject);
+            String Sub= Subject.getSelectedItem().toString();
+            */
 
+            EditText user=getView().findViewById(R.id.username_input);
+            if(user.getText()!=null) {
+                String n = user.getText().toString();
+                TextView name = getActivity().findViewById(R.id.name);
+                name.setText(n);
+            }
+            else {
+                TextView name = getActivity().findViewById(R.id.name);
+                name.setText("Anonymous");
+            }
+            /*
+              else{
+                TextView error = getView().findViewById(R.id.MESSAGE);
+                error.setText("No set created to put flashcard in/nplease make a set or choose a set to put this flashcard in");
+
+            }*/
             // When successful:
             if (getActivity() instanceof MainActivity) {
                 ((MainActivity) getActivity()).showMainApp();

@@ -26,32 +26,32 @@
             android:textColor="#ffffff"
             tools:ignore="MissingConstraints" />
 
+
+        <EditText
+            android:id="@+id/username_input"
+            android:layout_width="250dp"
+            android:layout_height="81dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/custombutton"
+            android:gravity="center"
+            android:hint="username"
+            android:textColorHint="#FFFBF6"
+            tools:ignore="MissingConstraints" />
+
         <EditText
             android:id="@+id/password_input"
             android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_height="71dp"
             android:background="@drawable/custombutton"
             android:gravity="center"
             android:hint="password"
             android:textColorHint="#FFFBF6"
             tools:ignore="MissingConstraints" />
 
-
-        <EditText
-            android:id="@+id/username_input"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:hint="username"
-            android:textColorHint="#FFFBF6"
-            android:background="@drawable/custombutton"
-            tools:ignore="MissingConstraints" />
-
         <Button
             android:id="@+id/login_button"
             android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_height="60dp"
             android:text="Sign in"
             android:textAllCaps="false" />
 
