@@ -2,5 +2,12 @@ https://trello.com/invite/b/68c81431c530304085011ef9/ATTI23990cc77b341e3faebfa40
 
 trello board
 
-instructions:
+instructions
+Make flashcard sets:
+1)In home click make Sets 
+2)Choose a folder from the spinner
+3)Give your set a unique name
+4)click add
+
+
 
