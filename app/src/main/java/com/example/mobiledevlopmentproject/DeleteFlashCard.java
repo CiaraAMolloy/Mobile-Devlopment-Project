@@ -149,7 +149,7 @@ if(!(this.getContext() ==null)) {
             try (DBHandler db = new DBHandler(this.getContext())) {
                 ArrayList<String> set = db.getSpecificSetID(setname);
                 // FlashCardText
-                TextView debug = getView().findViewById(R.id.FlashCardText);
+               // TextView debug = getView().findViewById(R.id.FlashCardText);
 
                 flashcardlist = getView().findViewById(R.id.list);
 

@@ -100,7 +100,7 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
         ArrayAdapter<String> adapter2 =
                 new ArrayAdapter<>
                         (this.getContext(),
-                                android.R.layout.simple_list_item_multiple_choice,
+                                android.R.layout.simple_spinner_dropdown_item,
                                 testlist);
         flashcardlist.setAdapter(adapter2);
 
@@ -157,7 +157,7 @@ public class MakeFlashCards extends Fragment implements View.OnClickListener{
                 ArrayAdapter<String> adapter =
                         new ArrayAdapter<>
                                 (this.getContext(),
-                                        android.R.layout.simple_list_item_multiple_choice,
+                                        android.R.layout.simple_spinner_dropdown_item,
                                         set);
                 flashcardlist.setAdapter(adapter);
 
