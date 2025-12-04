@@ -38,6 +38,18 @@ Delete flashcards:
 
 5)click delete
 
+View cards in a set:
+
+1)In home click Delete/view flashcards
+
+2)select a set view
+
+3)click the select button
+
+4)you should now see the list of flashcards 
+
+
+
 
 
 
