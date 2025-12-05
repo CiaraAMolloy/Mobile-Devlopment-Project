@@ -3,6 +3,14 @@ https://trello.com/invite/b/68c81431c530304085011ef9/ATTI23990cc77b341e3faebfa40
 trello board
 
 Instructions
+Home page:
+
+On any fragment click home to go home to easily access each fragment.
+
+next button:
+
+On any fragment click next to cycle through the fragments.
+
 
 Make flashcard sets:
 
@@ -90,6 +98,14 @@ Once you have made sets and flashcards you can see that they have been added to 
 the sets and subjects data base contains the names of your sets.
 
 the flashcard database should show a list of all the flashcards you created.
+
+login 
+
+Type your name in and you will see it above the screen.
+
+Remember me in login
+
+once you click login and remember me you will not be asked to login again on opening the app.
 
 
  
