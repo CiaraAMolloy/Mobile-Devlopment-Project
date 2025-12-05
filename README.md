@@ -2,51 +2,54 @@ https://trello.com/invite/b/68c81431c530304085011ef9/ATTI23990cc77b341e3faebfa40
 
 trello board
 
-instructions
+Instructions
+
 Make flashcard sets:
 
-1)In home click make Sets 
+1) In home click make Sets
 
-2)Choose a folder from the spinner
+2) Choose a folder from the spinner
 
-3)Give your set a unique name
+3) Give your set a unique name
 
-4)click add
+4) click add
 
 Make flashcards:
 
-1)click make flashcards
+1) click make flashcards.
 
-2)select a set to add your flashcard to 
+2) select a set to add your flashcard to. 
 
-3)give your flashcard a term and definition
-example term:1+1 definition:2 
+3) give your flashcard a term and definition
+example term:1+1 definition:2.
 
-4)click add
+4) click add
 
-5)you should see the flashcard you created
+5) you should see the flashcard you created
 
 Delete flashcards:
 
-1)In home click Delete/view flashcards
+1) In home click Delete/view flashcards
 
-2)select a set to delete cards from from the spinner
+2) select a set to delete cards from from the spinner
 
-3)click the select button
+3) click the select button
 
-4)you should now see the list of flashcards select one or multiple to delete
+4) you should now see the list of flashcards select one or multiple to delete
 
-5)click delete
+5) click delete
+   
 
 View cards in a set:
 
-1)In home click Delete/view flashcards
+1) In home click Delete/view flashcards
 
-2)select a set view
+2) select a set view
 
-3)click the select button
+3) click the select button
 
-4)you should now see the list of flashcards 
+4) you should now see the list of flashcards
+    
 
 Play the flashcard game
 
