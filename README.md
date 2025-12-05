@@ -75,6 +75,22 @@ Calender/creating events
 
 5) you will now see the days till that event
 
+Databases
+
+Once you have made sets and flashcards you can see that they have been added to databases in the app inspector
+(alternativly you could view them with the view flashcard function)
+ to do this
+ 1) click on app inspector
+    
+ 2) open the data base (while the app is running)
+
+the sets and subjects data base contains the names of your sets.
+
+the flashcard database should show a list of all the flashcards you created.
+
+
+ 
+
   
 
 
