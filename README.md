@@ -64,6 +64,19 @@ Share the results:
 
 after you have played a game you can then click share result as text
 
+Calender/creating events
+1) In home click the calender button
+
+2) click on a day to add an event (such as a test)
+
+3) type in the name of your event
+
+4) click add event
+
+5) you will now see the days till that event
+
+  
+
 
 
 
